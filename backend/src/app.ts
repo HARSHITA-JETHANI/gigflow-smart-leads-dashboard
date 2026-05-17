@@ -4,6 +4,7 @@ import connectDB from "./config/db";
 import authRoutes from "./routes/auth.routes";
 import { protect,
   authorizeRoles,} from "./middleware/auth.middleware";
+import leadRoutes from "./routes/lead.routes";
 
 dotenv.config();
 connectDB();
@@ -12,6 +13,8 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
+
+app.use("/api/leads", leadRoutes);  
 
 app.get("/api/protected", protect, (req, res) => {
   res.json({
