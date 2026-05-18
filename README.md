@@ -267,10 +267,6 @@ http://localhost:5173
 
 ---
 
-# 🐳 Docker Setup
-
-The application is fully Dockerized.
-
 ## ▶️ Run Full Application
 
 From project root:
