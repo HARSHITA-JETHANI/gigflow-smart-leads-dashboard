@@ -33,13 +33,29 @@ function LoginPage() {
         "token",
         response.data.token
       );
+      
+      // Save role for RBAC
+      localStorage.setItem(
+        "userRole",
+        response.data.user.role
+      );
+
+      // Save user info for UI
+      localStorage.setItem(
+        "userName",
+        response.data.user.name
+      );
+      localStorage.setItem(
+        "userEmail",
+        response.data.user.email
+      );
 
       // Go to dashboard
       navigate("/dashboard");
     } catch (err: any) {
       setError(
         err.response?.data?.message ||
-          "Login failed"
+        "Login failed"
       );
     } finally {
       setLoading(false);
@@ -54,9 +70,9 @@ function LoginPage() {
         </h1>
 
         {error && (
-          <p className="text-red-500 mb-4">
+          <div className="bg-red-100 text-red-700 p-3 rounded mb-4 text-sm">
             {error}
-          </p>
+          </div>
         )}
 
         <input

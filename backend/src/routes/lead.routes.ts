@@ -5,6 +5,7 @@ import { createLead,
   getLeadById,
   updateLead,
   deleteLead,
+  getStats,
  } from "../controllers/lead.controller";
 
 import {
@@ -17,7 +18,7 @@ const router = express.Router();
 router.post(
   "/",
   protect,
-  authorizeRoles("admin", "sales"),
+  authorizeRoles("admin"),
   createLead
 );
 
@@ -26,6 +27,13 @@ router.get(
   protect,
   authorizeRoles("admin", "sales"),
   getLeads
+);
+
+router.get(
+  "/stats",
+  protect,
+  authorizeRoles("admin", "sales"),
+  getStats
 );
 
 router.get(

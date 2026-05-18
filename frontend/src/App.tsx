@@ -5,6 +5,9 @@ import {
   Navigate,
 } from "react-router-dom";
 
+import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
+
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 
@@ -14,12 +17,20 @@ function App() {
       <Routes>
         <Route
           path="/login"
-          element={<LoginPage />}
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
         />
 
         <Route
           path="/dashboard"
-          element={<DashboardPage />}
+          element={
+          <ProtectedRoute>
+            <DashboardPage />
+          </ProtectedRoute>
+          }
         />
 
         <Route
