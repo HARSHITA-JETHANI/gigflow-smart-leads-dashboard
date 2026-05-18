@@ -52,15 +52,15 @@ function LeadsTable({
         />
       )}
 
-      <div className="bg-white rounded-xl shadow overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
         <table className="w-full">
-          <thead className="bg-gray-100">
+          <thead className="bg-slate-50 border-b border-slate-100">
             <tr>
-              <th className="text-left p-4 font-semibold text-gray-700">Name</th>
-              <th className="text-left p-4 font-semibold text-gray-700">Email</th>
-              <th className="text-left p-4 font-semibold text-gray-700">Status</th>
-              <th className="text-left p-4 font-semibold text-gray-700">Source</th>
-              <th className="text-left p-4 font-semibold text-gray-700">Actions</th>
+              <th className="text-left p-5 font-semibold text-slate-700 text-sm tracking-wide">Name</th>
+              <th className="text-left p-5 font-semibold text-slate-700 text-sm tracking-wide">Email</th>
+              <th className="text-left p-5 font-semibold text-slate-700 text-sm tracking-wide">Status</th>
+              <th className="text-left p-5 font-semibold text-slate-700 text-sm tracking-wide">Source</th>
+              <th className="text-left p-5 font-semibold text-slate-700 text-sm tracking-wide">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -79,27 +79,27 @@ function LeadsTable({
                   key={lead._id}
                   className="border-t hover:bg-gray-50 transition-colors"
                 >
-                  <td className="p-4">{lead.name}</td>
-                  <td className="p-4">{lead.email}</td>
-                  <td className="p-4">
+                  <td className="p-5">{lead.name}</td>
+                  <td className="p-5 text-slate-600">{lead.email}</td>
+                  <td className="p-5">
                     <span
                       className={`px-3 py-1 rounded-full text-sm font-medium
                       ${
                         lead.status === "Qualified"
-                          ? "bg-green-100 text-green-800"
+                          ? "bg-green-100 text-green-800 border border-green-200"
                           : lead.status === "Lost"
-                          ? "bg-red-100 text-red-800"
-                          : "bg-yellow-100 text-yellow-800"
+                          ? "bg-red-100 text-red-800 border border-red-200"
+                          : "bg-yellow-100 text-yellow-800 border border-yellow-200"
                       }`}
                     >
                       {lead.status}
                     </span>
                   </td>
-                  <td className="p-4 text-gray-600">{lead.source}</td>
-                  <td className="p-4 flex gap-2 flex-wrap">
+                  <td className="p-5 text-slate-600">{lead.source}</td>
+                  <td className="p-5 flex gap-2 flex-wrap">
                     <button
                       onClick={() => setViewLead(lead)}
-                      className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded transition-colors text-sm"
+                      className="bg-emerald-500 hover:bg-emerald-600 text-white px-3 py-1.5 rounded-lg transition-colors text-sm font-medium shadow-sm"
                     >
                       View
                     </button>
@@ -107,13 +107,13 @@ function LeadsTable({
                       <>
                         <button
                           onClick={() => setSelectedLead(lead)}
-                          className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded transition-colors text-sm"
+                          className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded-lg transition-colors text-sm font-medium shadow-sm"
                         >
                           Edit
                         </button>
                         <button
                           onClick={() => handleDelete(lead._id)}
-                          className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition-colors text-sm"
+                          className="bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded-lg transition-colors text-sm font-medium shadow-sm"
                         >
                           Delete
                         </button>

@@ -147,24 +147,24 @@ function DashboardPage() {
           )}
 
           {/* Header */}
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold">
+          <div className="flex justify-between items-center mb-8">
+            <h1 className="text-3xl font-bold text-slate-800 tracking-tight">
               Leads Dashboard
             </h1>
 
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               {userRole === "admin" && (
                 <>
                   <button
                     onClick={handleExportCSV}
                     disabled={isExporting}
-                    className="bg-gray-600 hover:bg-gray-700 text-white px-5 py-3 rounded-lg disabled:opacity-50"
+                    className="bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900 px-5 py-2.5 rounded-xl font-medium shadow-sm transition-all disabled:opacity-50 flex items-center gap-2"
                   >
                     {isExporting ? "Exporting..." : "Export CSV"}
                   </button>
                   <button
                     onClick={() => setShowModal(true)}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-lg"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-medium shadow-sm shadow-blue-600/20 transition-all flex items-center gap-2"
                   >
                     + Add Lead
                   </button>
@@ -190,14 +190,16 @@ function DashboardPage() {
           </div>
 
           {/* Search + Filter */}
-          <div className="bg-white p-4 rounded-xl shadow mb-6 flex flex-wrap gap-4">
-            <input
-              type="text"
-              placeholder="Search leads..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="border p-3 rounded flex-1 min-w-[200px]"
-            />
+          <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 mb-8 flex flex-wrap gap-4 items-center">
+            <div className="flex-1 min-w-[240px]">
+              <input
+                type="text"
+                placeholder="Search leads..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full border border-slate-200 px-4 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors bg-slate-50/50"
+              />
+            </div>
 
             <select
               value={status}
@@ -205,7 +207,7 @@ function DashboardPage() {
                 setStatus(e.target.value);
                 setPage(1);
               }}
-              className="border p-3 rounded"
+              className="border border-slate-200 px-4 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors bg-slate-50/50 min-w-[140px] cursor-pointer"
             >
               <option value="">All Status</option>
               <option value="New">New</option>
@@ -219,7 +221,7 @@ function DashboardPage() {
                 setSource(e.target.value);
                 setPage(1);
               }}
-              className="border p-3 rounded"
+              className="border border-slate-200 px-4 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors bg-slate-50/50 min-w-[140px] cursor-pointer"
             >
               <option value="">All Sources</option>
               <option value="Website">Website</option>
@@ -233,7 +235,7 @@ function DashboardPage() {
                 setSort(e.target.value);
                 setPage(1);
               }}
-              className="border p-3 rounded"
+              className="border border-slate-200 px-4 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors bg-slate-50/50 min-w-[140px] cursor-pointer"
             >
               <option value="latest">Latest First</option>
               <option value="oldest">Oldest First</option>
@@ -248,20 +250,20 @@ function DashboardPage() {
           />
 
           {/* Pagination */}
-          <div className="flex gap-3 mt-6">
+          <div className="flex gap-2 mt-8 justify-center items-center">
             <button
               onClick={() => setPage((prev) => (prev > 1 ? prev - 1 : 1))}
               disabled={page === 1}
-              className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded disabled:opacity-50"
+              className="bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-slate-900 px-4 py-2 rounded-lg font-medium transition-colors disabled:opacity-50"
             >
-              Prev
+              Previous
             </button>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded">
-              {page}
-            </button>
+            <div className="bg-blue-50 text-blue-700 font-semibold px-4 py-2 rounded-lg border border-blue-100">
+              Page {page}
+            </div>
             <button
               onClick={() => setPage((prev) => prev + 1)}
-              className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded"
+              className="bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-slate-900 px-4 py-2 rounded-lg font-medium transition-colors"
             >
               Next
             </button>

@@ -2,6 +2,9 @@ import type { ReactNode } from "react";
 import {
   FaChartBar,
   FaUsers,
+  FaChartPie,
+  FaFileAlt,
+  FaCog,
   FaSignOutAlt,
 } from "react-icons/fa";
 
@@ -42,32 +45,28 @@ function DashboardLayout({
           </h1>
 
           <div className="space-y-2">
-            <button 
-              onClick={() => navigate('/dashboard')}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-medium ${
-                isActive('/dashboard') 
-                  ? 'bg-blue-50 text-blue-700 shadow-sm' 
-                  : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-              }`}
-            >
-              <span className={isActive('/dashboard') ? 'text-blue-600' : 'text-slate-400'}>
-                <FaChartBar />
-              </span>
-              Dashboard
-            </button>
-
-            <button 
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-medium ${
-                isActive('/leads') 
-                  ? 'bg-blue-50 text-blue-700 shadow-sm' 
-                  : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-              }`}
-            >
-              <span className={isActive('/leads') ? 'text-blue-600' : 'text-slate-400'}>
-                <FaUsers />
-              </span>
-              Leads
-            </button>
+            {[
+              { path: '/dashboard', icon: <FaChartBar />, label: 'Dashboard' },
+              { path: '/leads', icon: <FaUsers />, label: 'Leads' },
+              { path: '/analytics', icon: <FaChartPie />, label: 'Analytics' },
+              { path: '/reports', icon: <FaFileAlt />, label: 'Reports' },
+              { path: '/settings', icon: <FaCog />, label: 'Settings' },
+            ].map((item) => (
+              <button 
+                key={item.path}
+                onClick={() => navigate(item.path)}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-medium ${
+                  isActive(item.path) 
+                    ? 'bg-blue-50 text-blue-700 shadow-sm' 
+                    : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                }`}
+              >
+                <span className={isActive(item.path) ? 'text-blue-600' : 'text-slate-400 group-hover:text-slate-500'}>
+                  {item.icon}
+                </span>
+                {item.label}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -86,8 +85,8 @@ function DashboardLayout({
       <div className="flex-1 ml-[260px] flex flex-col min-h-screen">
         {/* Navbar */}
         <div className="sticky top-0 z-10 bg-white/80 backdrop-blur-md border-b border-slate-200 px-8 py-4 flex justify-between items-center">
-          <h2 className="text-xl font-bold text-slate-800">
-            {location.pathname === '/dashboard' ? 'Overview' : 'Leads'}
+          <h2 className="text-xl font-bold text-slate-800 capitalize">
+            {location.pathname === '/' ? 'Dashboard' : location.pathname.substring(1)}
           </h2>
 
           <div className="flex items-center gap-4">

@@ -10,6 +10,9 @@ import PublicRoute from "./components/PublicRoute";
 
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
+import AnalyticsPage from "./pages/AnalyticsPage";
+import ReportsPage from "./pages/ReportsPage";
+import SettingsPage from "./pages/SettingsPage";
 
 function App() {
   return (
@@ -29,6 +32,42 @@ function App() {
           element={
           <ProtectedRoute>
             <DashboardPage />
+          </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/leads"
+          element={
+          <ProtectedRoute>
+            <DashboardPage />
+          </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/analytics"
+          element={
+          <ProtectedRoute>
+            <AnalyticsPage />
+          </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/reports"
+          element={
+          <ProtectedRoute>
+            <ReportsPage />
+          </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/settings"
+          element={
+          <ProtectedRoute>
+            <SettingsPage />
           </ProtectedRoute>
           }
         />
